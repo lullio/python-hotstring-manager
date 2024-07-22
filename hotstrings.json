@@ -9,6 +9,21 @@
             "trigger": "tatata",
             "replacement": "hehehe",
             "category": "ook"
+        },
+        {
+            "trigger": "olaa",
+            "replacement": "ooooilaaaa",
+            "category": "xxx"
+        },
+        {
+            "trigger": "testee2",
+            "replacement": "ooooook",
+            "category": "ook"
+        },
+        {
+            "trigger": "tatata",
+            "replacement": "eheheheheh",
+            "category": "xxx"
         }
     ]
 }

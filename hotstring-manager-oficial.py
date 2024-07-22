@@ -1,6 +1,8 @@
 import json
 import tkinter as tk
 from tkinter import ttk, messagebox
+import keyboard
+import threading
 
 CONFIG_FILE = "hotstrings.json"
 
@@ -12,8 +14,15 @@ class HotstringManager:
         # Carregar hotstrings do arquivo de configuração
         self.hotstrings = self.load_hotstrings()
 
+        # Configurar escuta de hotstrings
+        self.setup_hotstring_listener()
+
         # Widgets da interface
         self.create_widgets()
+
+        # Iniciar o monitoramento de teclado em um thread separado
+        self.keyboard_thread = threading.Thread(target=self.start_keyboard_listener, daemon=True)
+        self.keyboard_thread.start()
 
     def load_hotstrings(self):
         try:
@@ -96,6 +105,9 @@ class HotstringManager:
         self.replacement_entry.delete(0, tk.END)
         self.category_entry.delete(0, tk.END)
 
+        # Reconfigurar hotstrings após adicionar
+        self.setup_hotstring_listener()
+
     def search_hotstrings(self, event):
         query = self.search_entry.get().lower()
         for item in self.tree.get_children():
@@ -114,6 +126,21 @@ class HotstringManager:
             if selected_category == "All" or hotstring["category"] == selected_category:
                 self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"]))
 
+    def setup_hotstring_listener(self):
+        # Remove listeners existentes
+        keyboard.unhook_all()
+
+        # Adicionar hotstrings
+        for hotstring in self.hotstrings:
+            trigger = hotstring["trigger"]
+            replacement = hotstring["replacement"]
+            print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
+            keyboard.add_abbreviation(trigger, replacement)
+
+    def start_keyboard_listener(self):
+        # Iniciar o monitoramento dos eventos de teclado
+        print("Hotstring listener active. Press 'esc' to exit.")
+        keyboard.wait("esc")  # Use a tecla 'esc' para terminar o script
 
 if __name__ == "__main__":
     root = tk.Tk()
