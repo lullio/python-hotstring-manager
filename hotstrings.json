@@ -1,0 +1,14 @@
+{
+    "hotstrings": [
+        {
+            "trigger": "test",
+            "replacement": "teste hoje mesmo hehe",
+            "category": "ook"
+        },
+        {
+            "trigger": "tatata",
+            "replacement": "hehehe",
+            "category": "ook"
+        }
+    ]
+}
