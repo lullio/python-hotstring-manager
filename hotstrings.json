@@ -1,64 +1,152 @@
 {
     "hotstrings": [
         {
-            "trigger": "test",
-            "replacement": "teste hoje mesmo hehe",
-            "category": "ook",
+            "triggers": [
+                "propz.pass",
+                "propz.senha. propzpass",
+                "propzsenha",
+                "propzemailsenha"
+            ],
+            "replacement": "Marketing11@-analytics",
+            "category": "Propz",
             "prefix": ""
         },
         {
-            "trigger": "tatata",
-            "replacement": "hehehe",
-            "category": "ook",
+            "triggers": [
+                "propz.clear",
+                "propz.clean",
+                "js.clear",
+                "jsclear",
+                "propzclear",
+                "jsclean"
+            ],
+            "replacement": "localStorage.clear();\nsessionStorage.clear();\nindexedDB.deleteDatabase('localforage');\nindexedDB.deleteDatabase('firebase-messaging-database');\nindexedDB.deleteDatabase('firebase-installations-database');\nindexedDB.deleteDatabase('firebase-heartbeat-database');",
+            "category": "Propz",
             "prefix": ""
         },
         {
-            "trigger": "olaa",
-            "replacement": "ooooilaaaa",
-            "category": "xxx",
+            "triggers": [
+                "js.urlmongodb",
+                "js.mongodburl",
+                "urlmongodb"
+            ],
+            "replacement": "mongodb+srv://admin:admin@cluster0.6arhq.mongodb.net/?retryWrites=true&w=majority",
+            "category": "JavaScript",
             "prefix": ""
         },
         {
-            "trigger": "testee2",
-            "replacement": "ooooook",
-            "category": "ook",
+            "triggers": [
+                "js.urlaxios",
+                "js.axiosurl",
+                "js.axios.url",
+                "js.url.axios",
+                "urlaxios"
+            ],
+            "replacement": "<script src=\"https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js\"></script>",
+            "category": "JavaScript",
             "prefix": ""
         },
         {
-            "trigger": "tatata",
-            "replacement": "eheheheheh",
-            "category": "xxx",
+            "triggers": [
+                "js.queryone",
+                "qsone",
+                "js.qsone",
+                "js.qs.one",
+                "jsqs1",
+                "js.qs1",
+                "jsquery1",
+                "js.query1"
+            ],
+            "replacement": "document.querySelector('*').textContent",
+            "category": "DOM",
             "prefix": ""
         },
         {
-            "trigger": "teste000",
-            "replacement": "tatata",
-            "category": "tartre",
+            "triggers": [
+                "qsall",
+                "js.qsall",
+                "jsqsall",
+                "js",
+                "queryall",
+                "js.qsall",
+                "js.query2",
+                "js.qs2"
+            ],
+            "replacement": "document.querySelectorAll('*')",
+            "category": "DOM",
             "prefix": ""
         },
         {
-            "trigger": "tetete",
-            "replacement": "tetete",
-            "category": "tetetetete",
-            "prefix": ""
-        },
-        {
-            "trigger": "tetete",
-            "replacement": "tetete",
-            "category": "xxx",
-            "prefix": ""
-        },
-        {
-            "trigger": "tete11",
-            "replacement": "taacdafdsdfasdafsadfsfs",
-            "category": "ook",
+            "triggers": [
+                "fg"
+            ],
+            "replacement": "felipelullio@gmail.com",
+            "category": "Email",
             "prefix": "@"
         },
         {
-            "trigger": "tete12",
-            "replacement": "tetetete",
-            "category": "teera",
-            "prefix": "."
+            "triggers": [
+                "fh"
+            ],
+            "replacement": "felipe.lullio@hotmail.com",
+            "category": "Email",
+            "prefix": "@"
+        },
+        {
+            "triggers": [
+                "fp"
+            ],
+            "replacement": "felipe.lullio@propz.com.br",
+            "category": "Email",
+            "prefix": "@"
+        },
+        {
+            "triggers": [
+                "cg"
+            ],
+            "replacement": "cursofiap@gmail.com",
+            "category": "Email",
+            "prefix": "@"
+        },
+        {
+            "triggers": [
+                "cell1"
+            ],
+            "replacement": "11991486309",
+            "category": "Cell",
+            "prefix": "#"
+        },
+        {
+            "triggers": [
+                "cell2"
+            ],
+            "replacement": "11972586520",
+            "category": "Cell",
+            "prefix": "#"
+        },
+        {
+            "triggers": [
+                "cell3"
+            ],
+            "replacement": "11997588879",
+            "category": "Cell",
+            "prefix": "#"
+        },
+        {
+            "triggers": [
+                "cell"
+            ],
+            "replacement": "11973535162",
+            "category": "Cell",
+            "prefix": "#"
+        },
+        {
+            "triggers": [
+                "cells"
+            ],
+            "replacement": "11972586520\n11991486309\n11997588879\n11973535162",
+            "category": "Cell",
+            "prefix": "#"
         }
     ]
 }

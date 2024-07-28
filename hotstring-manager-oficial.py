@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import keyboard
 import threading
+import re
 
 CONFIG_FILE = "hotstrings.json"
 
@@ -94,27 +95,31 @@ class HotstringManager:
 
     def load_tree(self):
         for hotstring in self.hotstrings:
-            self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
+            triggers = ', '.join(hotstring["triggers"])
+            self.tree.insert("", "end", values=(triggers, hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
 
     def add_hotstring(self):
-        trigger = self.trigger_entry.get()
+        triggers = self.trigger_entry.get().split(',') # Aceita múltiplos triggers separados por vírgula
         replacement = self.replacement_entry.get()
         category = self.category_combobox.get()
         prefix = self.prefix_entry.get()
 
-        if not trigger or not replacement:
+        if not triggers or not replacement:
             messagebox.showwarning("Warning", "Trigger and Replacement fields must be filled!")
             return
+        
+        triggers = [trigger.strip() for trigger in triggers]  # Remove espaços extras
 
         # Se a categoria não estiver na lista, adiciona a nova categoria
         if category not in self.get_categories():
             self.category_combobox["values"] = self.get_categories() + [category]
 
-        hotstring = {"trigger": trigger, "replacement": replacement, "category": category, "prefix": prefix}
+        hotstring = {"triggers": triggers, "replacement": replacement, "category": category, "prefix": prefix}
         self.hotstrings.append(hotstring)
         self.save_hotstrings()
 
-        self.tree.insert("", "end", values=(trigger, replacement, category, prefix))
+        # self.tree.insert("", "end", values=(trigger, replacement, category, prefix))
+        self.tree.insert("", "end", values=(', '.join(triggers), replacement, category, prefix))
         self.trigger_entry.delete(0, tk.END)
         self.replacement_entry.delete(0, tk.END)
         self.category_combobox.set('')  # Limpa o combobox
@@ -130,13 +135,24 @@ class HotstringManager:
 
     def search_hotstrings(self, event):
         query = self.search_entry.get().lower()
+        pattern = re.compile(re.escape(query), re.IGNORECASE)
+            
         for item in self.tree.get_children():
             self.tree.delete(item)
 
         for hotstring in self.hotstrings:
-            if query in hotstring["trigger"].lower() or query in hotstring["replacement"].lower():
-                self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
-
+            triggers = ', '.join(hotstring["triggers"]).lower()
+            replacement = hotstring["replacement"].lower()
+            
+            # Verifica se a query corresponde a triggers ou replacement
+            if pattern.search(triggers) or pattern.search(replacement):
+                self.tree.insert("", "end", values=(
+                    ', '.join(hotstring["triggers"]), 
+                    hotstring["replacement"], 
+                    hotstring["category"], 
+                    hotstring["prefix"]
+                ))
+                
     def filter_by_category(self, event):
         selected_category = self.filter_combobox.get()
         for item in self.tree.get_children():
@@ -144,7 +160,8 @@ class HotstringManager:
 
         for hotstring in self.hotstrings:
             if selected_category == "All" or hotstring["category"] == selected_category:
-                self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
+                triggers = ', '.join(hotstring["triggers"])
+                self.tree.insert("", "end", values=(triggers, hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
 
     def delete_hotstring(self):
         selected_item = self.tree.selection()
@@ -157,11 +174,21 @@ class HotstringManager:
             messagebox.showwarning("Warning", "No data found for selected hotstring.")
             return
 
-        trigger, replacement, category, prefix = item_values
+        triggers, replacement, category, prefix = item_values
 
+        # Corrige a busca pela hotstring a ser removida
+        # Formata os triggers como uma lista de strings
+        triggers_list = triggers.split(', ')
+        # self.hotstrings = [hs for hs in self.hotstrings if not (hs["trigger"] == triggers and hs["replacement"] == replacement)]
+        
         # Remove o hotstring da lista
-        self.hotstrings = [hs for hs in self.hotstrings if not (hs["trigger"] == trigger and hs["replacement"] == replacement)]
-
+        self.hotstrings = [hs for hs in self.hotstrings if not (
+            set(hs["triggers"]) == set(triggers_list) and
+            hs["replacement"] == replacement and
+            hs["category"] == category and
+            hs["prefix"] == prefix
+        )]
+        
         # Atualiza o arquivo de configuração
         self.save_hotstrings()
 
@@ -177,13 +204,15 @@ class HotstringManager:
 
         # Adicionar hotstrings
         for hotstring in self.hotstrings:
-            trigger = hotstring["trigger"]
+            triggers = hotstring["triggers"]
             replacement = hotstring["replacement"]
             prefix = hotstring["prefix"]
             if prefix:
-                trigger = prefix + trigger  # Adiciona o prefixo ao trigger
-            print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
-            keyboard.add_abbreviation(trigger, replacement)
+                # trigger = prefix + trigger  # Adiciona o prefixo ao trigger
+                triggers = [prefix + trigger for trigger in triggers]  # Adiciona o prefixo a cada trigger
+            for trigger in triggers:
+                print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
+                keyboard.add_abbreviation(trigger, replacement)
 
     def start_keyboard_listener(self):
         # Iniciar o monitoramento dos eventos de teclado
