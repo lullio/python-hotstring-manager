@@ -89,7 +89,7 @@ class HotstringManager:
         search_term = self.search_entry.get().lower()
 
         for key, value in self.hotstrings.items():
-            options, abbreviation = key.split(":")
+            # options, abbreviation = key.split(":")
             replacement, comment = value.split(" `;", 1) if " `;" in value else (value, "")
             
             if search_term in abbreviation.lower() or search_term in replacement.lower() or search_term in comment.lower():

@@ -51,8 +51,9 @@ class HotstringManager:
         self.replacement_entry.grid(row=0, column=3, padx=5)
 
         tk.Label(self.add_frame, text="Category:").grid(row=0, column=4, padx=5)
-        self.category_entry = tk.Entry(self.add_frame)
-        self.category_entry.grid(row=0, column=5, padx=5)
+        self.category_combobox = ttk.Combobox(self.add_frame, values=self.get_categories(), state="normal")
+        self.category_combobox.grid(row=0, column=5, padx=5)
+        self.category_combobox.bind("<FocusOut>", self.on_category_combobox_focus_out)  # Verifica se uma nova categoria foi inserida
 
         tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=0, column=6, padx=5)
 
@@ -62,6 +63,9 @@ class HotstringManager:
         self.tree.heading("replacement", text="Replacement")
         self.tree.heading("category", text="Category")
         self.tree.pack(pady=10)
+
+        # Botão de delete
+        tk.Button(self.master, text="Delete", command=self.delete_hotstring).pack(pady=10)
 
         self.load_tree()
 
@@ -75,9 +79,9 @@ class HotstringManager:
         self.search_entry.bind("<KeyRelease>", self.search_hotstrings)
 
         tk.Label(self.search_frame, text="Category:").grid(row=0, column=2, padx=5)
-        self.category_combobox = ttk.Combobox(self.search_frame, values=self.get_categories())
-        self.category_combobox.grid(row=0, column=3, padx=5)
-        self.category_combobox.bind("<<ComboboxSelected>>", self.filter_by_category)
+        self.filter_combobox = ttk.Combobox(self.search_frame, values=self.get_categories())
+        self.filter_combobox.grid(row=0, column=3, padx=5)
+        self.filter_combobox.bind("<<ComboboxSelected>>", self.filter_by_category)
 
     def get_categories(self):
         categories = set(hotstring["category"] for hotstring in self.hotstrings)
@@ -90,11 +94,15 @@ class HotstringManager:
     def add_hotstring(self):
         trigger = self.trigger_entry.get()
         replacement = self.replacement_entry.get()
-        category = self.category_entry.get()
+        category = self.category_combobox.get()
 
-        if not trigger or not replacement or not category:
-            messagebox.showwarning("Warning", "All fields must be filled!")
+        if not trigger or not replacement:
+            messagebox.showwarning("Warning", "Trigger and Replacement fields must be filled!")
             return
+
+        # Se a categoria não estiver na lista, adiciona a nova categoria
+        if category not in self.get_categories():
+            self.category_combobox["values"] = self.get_categories() + [category]
 
         hotstring = {"trigger": trigger, "replacement": replacement, "category": category}
         self.hotstrings.append(hotstring)
@@ -103,10 +111,15 @@ class HotstringManager:
         self.tree.insert("", "end", values=(trigger, replacement, category))
         self.trigger_entry.delete(0, tk.END)
         self.replacement_entry.delete(0, tk.END)
-        self.category_entry.delete(0, tk.END)
+        self.category_combobox.set('')  # Limpa o combobox
 
         # Reconfigurar hotstrings após adicionar
         self.setup_hotstring_listener()
+
+    def on_category_combobox_focus_out(self, event):
+        category = self.category_combobox.get()
+        if category and category not in self.get_categories():
+            self.category_combobox["values"] = self.get_categories() + [category]
 
     def search_hotstrings(self, event):
         query = self.search_entry.get().lower()
@@ -118,13 +131,38 @@ class HotstringManager:
                 self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"]))
 
     def filter_by_category(self, event):
-        selected_category = self.category_combobox.get()
+        selected_category = self.filter_combobox.get()
         for item in self.tree.get_children():
             self.tree.delete(item)
 
         for hotstring in self.hotstrings:
             if selected_category == "All" or hotstring["category"] == selected_category:
                 self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"]))
+
+    def delete_hotstring(self):
+        selected_item = self.tree.selection()
+        if not selected_item:
+            messagebox.showwarning("Warning", "No hotstring selected for deletion.")
+            return
+
+        item_values = self.tree.item(selected_item, "values")
+        if not item_values:
+            messagebox.showwarning("Warning", "No data found for selected hotstring.")
+            return
+
+        trigger, replacement, category = item_values
+
+        # Remove o hotstring da lista
+        self.hotstrings = [hs for hs in self.hotstrings if not (hs["trigger"] == trigger and hs["replacement"] == replacement)]
+
+        # Atualiza o arquivo de configuração
+        self.save_hotstrings()
+
+        # Remove a hotstring da Treeview
+        self.tree.delete(selected_item)
+
+        # Reconfigurar hotstrings após exclusão
+        self.setup_hotstring_listener()
 
     def setup_hotstring_listener(self):
         # Remove listeners existentes

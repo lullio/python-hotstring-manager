@@ -24,6 +24,21 @@
             "trigger": "tatata",
             "replacement": "eheheheheh",
             "category": "xxx"
+        },
+        {
+            "trigger": "teste000",
+            "replacement": "tatata",
+            "category": "tartre"
+        },
+        {
+            "trigger": "tetete",
+            "replacement": "tetete",
+            "category": "tetetetete"
+        },
+        {
+            "trigger": "tetete",
+            "replacement": "tetete",
+            "category": "xxx"
         }
     ]
 }
