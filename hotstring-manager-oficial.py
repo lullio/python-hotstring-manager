@@ -134,17 +134,29 @@ class HotstringManager:
             self.category_combobox["values"] = self.get_categories() + [category]
 
     def search_hotstrings(self, event):
-        query = self.search_entry.get().lower()
-        pattern = re.compile(re.escape(query), re.IGNORECASE)
-            
+        query = self.search_entry.get().strip()  # Remove espaços extras antes e depois da consulta
+        if not query:
+            # Se a consulta estiver vazia, exibe todos os hotstrings
+            self.load_tree()
+            return
+
+        # Compila a expressão regular com a consulta, garantindo a correspondência correta
+        try:
+            pattern = re.compile(query, re.IGNORECASE)  # Usa re.IGNORECASE para corresponder sem distinguir maiúsculas e minúsculas
+        except re.error:
+            messagebox.showerror("Invalid Regex", "The search query is not a valid regular expression.")
+            return
+
+        # Limpa a Treeview
         for item in self.tree.get_children():
             self.tree.delete(item)
 
+        # Insere os hotstrings que correspondem à expressão regular
         for hotstring in self.hotstrings:
-            triggers = ', '.join(hotstring["triggers"]).lower()
-            replacement = hotstring["replacement"].lower()
+            triggers = ', '.join(hotstring["triggers"])  # Concatena todos os triggers em uma string
+            replacement = hotstring["replacement"]
             
-            # Verifica se a query corresponde a triggers ou replacement
+            # Verifica se a regex corresponde a triggers ou replacement
             if pattern.search(triggers) or pattern.search(replacement):
                 self.tree.insert("", "end", values=(
                     ', '.join(hotstring["triggers"]), 
