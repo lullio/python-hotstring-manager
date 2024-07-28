@@ -3,42 +3,62 @@
         {
             "trigger": "test",
             "replacement": "teste hoje mesmo hehe",
-            "category": "ook"
+            "category": "ook",
+            "prefix": ""
         },
         {
             "trigger": "tatata",
             "replacement": "hehehe",
-            "category": "ook"
+            "category": "ook",
+            "prefix": ""
         },
         {
             "trigger": "olaa",
             "replacement": "ooooilaaaa",
-            "category": "xxx"
+            "category": "xxx",
+            "prefix": ""
         },
         {
             "trigger": "testee2",
             "replacement": "ooooook",
-            "category": "ook"
+            "category": "ook",
+            "prefix": ""
         },
         {
             "trigger": "tatata",
             "replacement": "eheheheheh",
-            "category": "xxx"
+            "category": "xxx",
+            "prefix": ""
         },
         {
             "trigger": "teste000",
             "replacement": "tatata",
-            "category": "tartre"
+            "category": "tartre",
+            "prefix": ""
         },
         {
             "trigger": "tetete",
             "replacement": "tetete",
-            "category": "tetetetete"
+            "category": "tetetetete",
+            "prefix": ""
         },
         {
             "trigger": "tetete",
             "replacement": "tetete",
-            "category": "xxx"
+            "category": "xxx",
+            "prefix": ""
+        },
+        {
+            "trigger": "tete11",
+            "replacement": "taacdafdsdfasdafsadfsfs",
+            "category": "ook",
+            "prefix": "@"
+        },
+        {
+            "trigger": "tete12",
+            "replacement": "tetetete",
+            "category": "teera",
+            "prefix": "."
         }
     ]
 }

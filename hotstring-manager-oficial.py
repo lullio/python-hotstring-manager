@@ -55,13 +55,18 @@ class HotstringManager:
         self.category_combobox.grid(row=0, column=5, padx=5)
         self.category_combobox.bind("<FocusOut>", self.on_category_combobox_focus_out)  # Verifica se uma nova categoria foi inserida
 
-        tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=0, column=6, padx=5)
+        tk.Label(self.add_frame, text="Prefix:").grid(row=0, column=6, padx=5)
+        self.prefix_entry = tk.Entry(self.add_frame)
+        self.prefix_entry.grid(row=0, column=7, padx=5)
+
+        tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=0, column=8, padx=5)
 
         # Lista de hotstrings
-        self.tree = ttk.Treeview(self.master, columns=("trigger", "replacement", "category"), show="headings")
+        self.tree = ttk.Treeview(self.master, columns=("trigger", "replacement", "category", "prefix"), show="headings")
         self.tree.heading("trigger", text="Trigger")
         self.tree.heading("replacement", text="Replacement")
         self.tree.heading("category", text="Category")
+        self.tree.heading("prefix", text="Prefix")
         self.tree.pack(pady=10)
 
         # Botão de delete
@@ -89,12 +94,13 @@ class HotstringManager:
 
     def load_tree(self):
         for hotstring in self.hotstrings:
-            self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"]))
+            self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
 
     def add_hotstring(self):
         trigger = self.trigger_entry.get()
         replacement = self.replacement_entry.get()
         category = self.category_combobox.get()
+        prefix = self.prefix_entry.get()
 
         if not trigger or not replacement:
             messagebox.showwarning("Warning", "Trigger and Replacement fields must be filled!")
@@ -104,14 +110,15 @@ class HotstringManager:
         if category not in self.get_categories():
             self.category_combobox["values"] = self.get_categories() + [category]
 
-        hotstring = {"trigger": trigger, "replacement": replacement, "category": category}
+        hotstring = {"trigger": trigger, "replacement": replacement, "category": category, "prefix": prefix}
         self.hotstrings.append(hotstring)
         self.save_hotstrings()
 
-        self.tree.insert("", "end", values=(trigger, replacement, category))
+        self.tree.insert("", "end", values=(trigger, replacement, category, prefix))
         self.trigger_entry.delete(0, tk.END)
         self.replacement_entry.delete(0, tk.END)
         self.category_combobox.set('')  # Limpa o combobox
+        self.prefix_entry.delete(0, tk.END)  # Limpa o campo de prefixo
 
         # Reconfigurar hotstrings após adicionar
         self.setup_hotstring_listener()
@@ -128,7 +135,7 @@ class HotstringManager:
 
         for hotstring in self.hotstrings:
             if query in hotstring["trigger"].lower() or query in hotstring["replacement"].lower():
-                self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"]))
+                self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
 
     def filter_by_category(self, event):
         selected_category = self.filter_combobox.get()
@@ -137,7 +144,7 @@ class HotstringManager:
 
         for hotstring in self.hotstrings:
             if selected_category == "All" or hotstring["category"] == selected_category:
-                self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"]))
+                self.tree.insert("", "end", values=(hotstring["trigger"], hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
 
     def delete_hotstring(self):
         selected_item = self.tree.selection()
@@ -150,7 +157,7 @@ class HotstringManager:
             messagebox.showwarning("Warning", "No data found for selected hotstring.")
             return
 
-        trigger, replacement, category = item_values
+        trigger, replacement, category, prefix = item_values
 
         # Remove o hotstring da lista
         self.hotstrings = [hs for hs in self.hotstrings if not (hs["trigger"] == trigger and hs["replacement"] == replacement)]
@@ -172,6 +179,9 @@ class HotstringManager:
         for hotstring in self.hotstrings:
             trigger = hotstring["trigger"]
             replacement = hotstring["replacement"]
+            prefix = hotstring["prefix"]
+            if prefix:
+                trigger = prefix + trigger  # Adiciona o prefixo ao trigger
             print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
             keyboard.add_abbreviation(trigger, replacement)
 
