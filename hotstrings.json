@@ -147,6 +147,14 @@
             "replacement": "11972586520\n11991486309\n11997588879\n11973535162",
             "category": "Cell",
             "prefix": "#"
+        },
+        {
+            "triggers": [
+                "clog"
+            ],
+            "replacement": "console.log",
+            "category": "",
+            "prefix": ""
         }
     ]
 }
