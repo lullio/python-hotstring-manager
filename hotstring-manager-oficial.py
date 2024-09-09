@@ -4,6 +4,7 @@ from tkinter import ttk, messagebox
 import keyboard
 import threading
 import re
+import time
 
 CONFIG_FILE = "hotstrings.json"
 
@@ -223,7 +224,7 @@ class HotstringManager:
         self.setup_hotstring_listener()
 
     def setup_hotstring_listener(self):
-        # Remove listeners existentes
+        # Remove listeners
         keyboard.unhook_all()
 
         # Adicionar hotstrings
@@ -232,26 +233,54 @@ class HotstringManager:
             replacement = hotstring["replacement"]
             prefix = hotstring["prefix"]
             back_count = hotstring.get("backCount", 0)
-            if prefix:
-                # trigger = prefix + trigger  # Adiciona o prefixo ao trigger
-                triggers = [prefix + trigger for trigger in triggers]  # Adiciona o prefixo a cada trigger
+            # if prefix:
+            #     # trigger = prefix + trigger  # Adiciona o prefixo ao trigger
+            #     triggers = [prefix + trigger for trigger in triggers]  # Adiciona o prefixo a cada trigger
             for trigger in triggers:
                 # print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
+                # keyboard.add_abbreviation(trigger, replacement)
                 print(f"Adding hotstring: '{trigger}' -> '{replacement}' with backCount: {back_count}")  # Adicione este print para depuração
-                # Adicionar o comportamento de backCount na substituição
-                keyboard.add_abbreviation(trigger, replacement)
+                # Adicionar o listener para detectar o texto digitado e substituir
+                def callback():
+                    # Remove o texto digitado com backspace
+                    trigger_length = len(trigger)
+                    for _ in range(trigger_length+1): # + 1 por causa do espaço ou triggers
+                        keyboard.press_and_release('backspace')
+                        time.sleep(0.00)  # Pequena pausa para garantir que o backspace é registrado
+                    # Digita o texto de substituição
+                    keyboard.write(replacement)
+                    time.sleep(0.00)  # Pequena pausa para garantir que o texto seja escrito
+
+                    # Simula pressionar a tecla Left `back_count` vezes
+                    for _ in range(back_count):
+                        keyboard.press_and_release('left')
+                        time.sleep(0.00)  # Pequena pausa para garantir que o backspace é registrado
+
+                keyboard.add_word_listener(
+                    trigger,
+                    callback,
+                    triggers=['space'],
+                    match_suffix=False,
+                    timeout=2
+                )
+                # keyboard.add_abbreviation(trigger, lambda: replace_with_back_count(replacement, back_count))
                 # keyboard.add_abbreviation(trigger, lambda: self.replace_with_back_count(replacement, back_count))
                 # keyboard.add_abbreviation(trigger, lambda: self.replace_with_back_count(replacement, back_count))
-    def replace_with_back_count(self, replacement, back_count):
-            # Apaga os últimos 'back_count' caracteres antes de substituir
-            keyboard.write('\b' * back_count)
-            # Insere o texto de substituição
-            keyboard.write(replacement)
+    def execute_backspace(self, replacement, back_count):
+        # Digita o texto de substituição
+        keyboard.write(replacement)
+        time.sleep(0.0)  # Pequena pausa para garantir que o texto seja escrito
+
+        # Simula pressionar a tecla Backspace `back_count` vezes
+        for _ in range(back_count):
+            # keyboard.press_and_release('backspace')
+            keyboard.press_and_release('left')
+            time.sleep(0.00)  # Pequena pausa para garantir que o backspace é registrado
 
     def start_keyboard_listener(self):
         # Iniciar o monitoramento dos eventos de teclado
         print("Hotstring listener active. Press 'esc' to exit.")
-        keyboard.wait("esc")  # Use a tecla 'esc' para terminar o script
+        keyboard.wait("shift+ctrl+esc")  # Use a tecla 'esc' para terminar o script
 
 if __name__ == "__main__":
     root = tk.Tk()
