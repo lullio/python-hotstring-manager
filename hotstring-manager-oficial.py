@@ -43,6 +43,7 @@ class HotstringManager:
         self.add_frame = tk.Frame(self.master)
         self.add_frame.pack(pady=10)
 
+        # Primeira linha: Trigger, Replacement e Prefix
         tk.Label(self.add_frame, text="Trigger:").grid(row=0, column=0, padx=5)
         self.trigger_entry = tk.Entry(self.add_frame)
         self.trigger_entry.grid(row=0, column=1, padx=5)
@@ -51,19 +52,24 @@ class HotstringManager:
         self.replacement_entry = tk.Entry(self.add_frame)
         self.replacement_entry.grid(row=0, column=3, padx=5)
 
-        tk.Label(self.add_frame, text="Category:").grid(row=0, column=4, padx=5)
-        self.category_combobox = ttk.Combobox(self.add_frame, values=self.get_categories(), state="normal")
-        self.category_combobox.grid(row=0, column=5, padx=5)
-        self.category_combobox.bind("<FocusOut>", self.on_category_combobox_focus_out)  # Verifica se uma nova categoria foi inserida
-
-        tk.Label(self.add_frame, text="Prefix:").grid(row=0, column=6, padx=5)
+        tk.Label(self.add_frame, text="Prefix:").grid(row=0, column=4, padx=5)
         self.prefix_entry = tk.Entry(self.add_frame)
-        self.prefix_entry.grid(row=0, column=7, padx=5)
+        self.prefix_entry.grid(row=0, column=5, padx=5)
 
-        tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=0, column=8, padx=5)
+        # Segunda linha: Category, BackCount e Botão Add
+        tk.Label(self.add_frame, text="Category:").grid(row=1, column=0, padx=5)
+        self.category_combobox = ttk.Combobox(self.add_frame, values=self.get_categories(), state="normal")
+        self.category_combobox.grid(row=1, column=1, padx=5)
+        self.category_combobox.bind("<FocusOut>", self.on_category_combobox_focus_out)
+
+        tk.Label(self.add_frame, text="BackCount:").grid(row=1, column=2, padx=5)
+        self.backcount_spinbox = tk.Spinbox(self.add_frame, from_=0, to=100, width=5)  # Valor de 0 a 100
+        self.backcount_spinbox.grid(row=1, column=3, padx=5)
+
+        tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=1, column=4, padx=5)
 
         # Lista de hotstrings
-        self.tree = ttk.Treeview(self.master, columns=("trigger", "replacement", "category", "prefix"), show="headings")
+        self.tree = ttk.Treeview(self.master, columns=("trigger", "replacement", "category", "prefix", "backCount"), show="headings")
         self.tree.heading("trigger", text="Trigger")
         self.tree.heading("replacement", text="Replacement")
         self.tree.heading("category", text="Category")
@@ -89,6 +95,7 @@ class HotstringManager:
         self.filter_combobox.grid(row=0, column=3, padx=5)
         self.filter_combobox.bind("<<ComboboxSelected>>", self.filter_by_category)
 
+
     def get_categories(self):
         categories = set(hotstring["category"] for hotstring in self.hotstrings)
         return ["All"] + list(categories)
@@ -96,13 +103,16 @@ class HotstringManager:
     def load_tree(self):
         for hotstring in self.hotstrings:
             triggers = ', '.join(hotstring["triggers"])
-            self.tree.insert("", "end", values=(triggers, hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
+            # self.tree.insert("", "end", values=(triggers, hotstring["replacement"], hotstring["category"], hotstring["prefix"]))
+            self.tree.insert("", "end", values=(triggers, hotstring["replacement"], hotstring["category"], hotstring["prefix"], hotstring.get("backCount", 0)))
+
 
     def add_hotstring(self):
         triggers = self.trigger_entry.get().split(',') # Aceita múltiplos triggers separados por vírgula
         replacement = self.replacement_entry.get()
         category = self.category_combobox.get()
         prefix = self.prefix_entry.get()
+        back_count = self.backcount_spinbox.get() or 0  # Novo campo para backCount, padrão "0"
 
         if not triggers or not replacement:
             messagebox.showwarning("Warning", "Trigger and Replacement fields must be filled!")
@@ -114,12 +124,13 @@ class HotstringManager:
         if category not in self.get_categories():
             self.category_combobox["values"] = self.get_categories() + [category]
 
-        hotstring = {"triggers": triggers, "replacement": replacement, "category": category, "prefix": prefix}
+        # hotstring = {"triggers": triggers, "replacement": replacement, "category": category, "prefix": prefix}
+        hotstring = {"triggers": triggers, "replacement": replacement, "category": category, "prefix": prefix, "backCount": int(back_count)}
         self.hotstrings.append(hotstring)
         self.save_hotstrings()
 
         # self.tree.insert("", "end", values=(trigger, replacement, category, prefix))
-        self.tree.insert("", "end", values=(', '.join(triggers), replacement, category, prefix))
+        self.tree.insert("", "end", values=(', '.join(triggers), replacement, category, prefix, back_count))
         self.trigger_entry.delete(0, tk.END)
         self.replacement_entry.delete(0, tk.END)
         self.category_combobox.set('')  # Limpa o combobox
@@ -186,7 +197,7 @@ class HotstringManager:
             messagebox.showwarning("Warning", "No data found for selected hotstring.")
             return
 
-        triggers, replacement, category, prefix = item_values
+        triggers, replacement, category, prefix, back_count = item_values
 
         # Corrige a busca pela hotstring a ser removida
         # Formata os triggers como uma lista de strings
@@ -198,7 +209,8 @@ class HotstringManager:
             set(hs["triggers"]) == set(triggers_list) and
             hs["replacement"] == replacement and
             hs["category"] == category and
-            hs["prefix"] == prefix
+            hs["prefix"] == prefix and
+            str(hs.get("backCount", 0)) == back_count  # Comparar backCount como string
         )]
         
         # Atualiza o arquivo de configuração
@@ -219,12 +231,22 @@ class HotstringManager:
             triggers = hotstring["triggers"]
             replacement = hotstring["replacement"]
             prefix = hotstring["prefix"]
+            back_count = hotstring.get("backCount", 0)
             if prefix:
                 # trigger = prefix + trigger  # Adiciona o prefixo ao trigger
                 triggers = [prefix + trigger for trigger in triggers]  # Adiciona o prefixo a cada trigger
             for trigger in triggers:
-                print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
+                # print(f"Adding hotstring: '{trigger}' -> '{replacement}'")  # Adicione este print para depuração
+                print(f"Adding hotstring: '{trigger}' -> '{replacement}' with backCount: {back_count}")  # Adicione este print para depuração
+                # Adicionar o comportamento de backCount na substituição
                 keyboard.add_abbreviation(trigger, replacement)
+                # keyboard.add_abbreviation(trigger, lambda: self.replace_with_back_count(replacement, back_count))
+                # keyboard.add_abbreviation(trigger, lambda: self.replace_with_back_count(replacement, back_count))
+    def replace_with_back_count(self, replacement, back_count):
+            # Apaga os últimos 'back_count' caracteres antes de substituir
+            keyboard.write('\b' * back_count)
+            # Insere o texto de substituição
+            keyboard.write(replacement)
 
     def start_keyboard_listener(self):
         # Iniciar o monitoramento dos eventos de teclado

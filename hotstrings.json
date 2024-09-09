@@ -9,7 +9,8 @@
             ],
             "replacement": "Marketing11@-analytics",
             "category": "Propz",
-            "prefix": ""
+            "prefix": "",
+            "backCount": 1
         },
         {
             "triggers": [
@@ -22,139 +23,17 @@
             ],
             "replacement": "localStorage.clear();\nsessionStorage.clear();\nindexedDB.deleteDatabase('localforage');\nindexedDB.deleteDatabase('firebase-messaging-database');\nindexedDB.deleteDatabase('firebase-installations-database');\nindexedDB.deleteDatabase('firebase-heartbeat-database');",
             "category": "Propz",
-            "prefix": ""
-        },
-        {
-            "triggers": [
-                "js.urlmongodb",
-                "js.mongodburl",
-                "urlmongodb"
-            ],
-            "replacement": "mongodb+srv://admin:admin@cluster0.6arhq.mongodb.net/?retryWrites=true&w=majority",
-            "category": "JavaScript",
-            "prefix": ""
-        },
-        {
-            "triggers": [
-                "js.urlaxios",
-                "js.axiosurl",
-                "js.axios.url",
-                "js.url.axios",
-                "urlaxios"
-            ],
-            "replacement": "<script src=\"https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js\"></script>",
-            "category": "JavaScript",
-            "prefix": ""
-        },
-        {
-            "triggers": [
-                "js.queryone",
-                "qsone",
-                "js.qsone",
-                "js.qs.one",
-                "jsqs1",
-                "js.qs1",
-                "jsquery1",
-                "js.query1"
-            ],
-            "replacement": "document.querySelector('*').textContent",
-            "category": "DOM",
-            "prefix": ""
-        },
-        {
-            "triggers": [
-                "qsall",
-                "js.qsall",
-                "jsqsall",
-                "js",
-                "queryall",
-                "js.qsall",
-                "js.query2",
-                "js.qs2"
-            ],
-            "replacement": "document.querySelectorAll('*')",
-            "category": "DOM",
-            "prefix": ""
-        },
-        {
-            "triggers": [
-                "fg"
-            ],
-            "replacement": "felipelullio@gmail.com",
-            "category": "Email",
-            "prefix": "@"
-        },
-        {
-            "triggers": [
-                "fh"
-            ],
-            "replacement": "felipe.lullio@hotmail.com",
-            "category": "Email",
-            "prefix": "@"
-        },
-        {
-            "triggers": [
-                "fp"
-            ],
-            "replacement": "felipe.lullio@propz.com.br",
-            "category": "Email",
-            "prefix": "@"
-        },
-        {
-            "triggers": [
-                "cg"
-            ],
-            "replacement": "cursofiap@gmail.com",
-            "category": "Email",
-            "prefix": "@"
-        },
-        {
-            "triggers": [
-                "cell1"
-            ],
-            "replacement": "11991486309",
-            "category": "Cell",
-            "prefix": "#"
-        },
-        {
-            "triggers": [
-                "cell2"
-            ],
-            "replacement": "11972586520",
-            "category": "Cell",
-            "prefix": "#"
-        },
-        {
-            "triggers": [
-                "cell3"
-            ],
-            "replacement": "11997588879",
-            "category": "Cell",
-            "prefix": "#"
-        },
-        {
-            "triggers": [
-                "cell"
-            ],
-            "replacement": "11973535162",
-            "category": "Cell",
-            "prefix": "#"
-        },
-        {
-            "triggers": [
-                "cells"
-            ],
-            "replacement": "11972586520\n11991486309\n11997588879\n11973535162",
-            "category": "Cell",
-            "prefix": "#"
+            "prefix": "",
+            "backCount": 1
         },
         {
             "triggers": [
                 "clog"
             ],
-            "replacement": "console.log",
-            "category": "",
-            "prefix": ""
+            "replacement": "console.log()",
+            "category": "All",
+            "prefix": "",
+            "backCount": 2
         }
     ]
 }
