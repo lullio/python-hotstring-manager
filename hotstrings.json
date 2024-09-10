@@ -3,6 +3,7 @@
         {
             "triggers": [
                 "propz.pass",
+                "@propzpass",
                 "propz.senha. propzpass",
                 "propzsenha",
                 "propzemailsenha"
@@ -10,7 +11,7 @@
             "replacement": "Marketing11@-analytics",
             "category": "Propz",
             "prefix": "",
-            "backCount": 1
+            "backCount": 0
         },
         {
             "triggers": [
@@ -24,7 +25,7 @@
             "replacement": "localStorage.clear();\nsessionStorage.clear();\nindexedDB.deleteDatabase('localforage');\nindexedDB.deleteDatabase('firebase-messaging-database');\nindexedDB.deleteDatabase('firebase-installations-database');\nindexedDB.deleteDatabase('firebase-heartbeat-database');",
             "category": "Propz",
             "prefix": "",
-            "backCount": 1
+            "backCount": 0
         },
         {
             "triggers": [
@@ -33,7 +34,351 @@
             "replacement": "console.log()",
             "category": "All",
             "prefix": "",
-            "backCount": 5
+            "backCount": 1
+        },
+        {
+            "triggers": [
+                "js.urlmongodb",
+                "js.mongodburl",
+                "urlmongodb"
+            ],
+            "replacement": "mongodb+srv://admin:admin@cluster0.6arhq.mongodb.net/?retryWrites=true&w=majority",
+            "category": "JavaScript",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "js.urlaxios",
+                "js.axiosurl",
+                "js.axios.url",
+                "js.url.axios",
+                "urlaxios"
+            ],
+            "replacement": "<script src=\"https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js\"></script>",
+            "category": "JavaScript",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "js.queryone",
+                "qsone",
+                "js.qsone",
+                "js.qs.one",
+                "jsqs1",
+                "js.qs1",
+                "jsquery1",
+                "js.query1",
+                "js.query"
+            ],
+            "replacement": "document.querySelector('*').textContent",
+            "category": "DOM",
+            "prefix": "",
+            "backCount": 15
+        },
+        {
+            "triggers": [
+                "qsall",
+                "js.qsall",
+                "jsqsall",
+                "js",
+                "queryall",
+                "js.qsall",
+                "js.query2",
+                "js.qs2"
+            ],
+            "replacement": "document.querySelectorAll('*')",
+            "category": "DOM",
+            "prefix": "",
+            "backCount": 2
+        },
+        {
+            "triggers": [
+                "@fg"
+            ],
+            "replacement": "felipelullio@gmail.com",
+            "category": "Email",
+            "prefix": "@",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "@fh"
+            ],
+            "replacement": "felipe.lullio@hotmail.com",
+            "category": "Email",
+            "prefix": "@",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "@fp"
+            ],
+            "replacement": "felipe.lullio@propz.com.br",
+            "category": "Email",
+            "prefix": "@",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "@cg"
+            ],
+            "replacement": "cursofiap@gmail.com",
+            "category": "Email",
+            "prefix": "@",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "#cell1"
+            ],
+            "replacement": "11991486309",
+            "category": "Cell",
+            "prefix": "#",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "#cell2"
+            ],
+            "replacement": "11972586520",
+            "category": "Cell",
+            "prefix": "#",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "#cell3"
+            ],
+            "replacement": "11997588879",
+            "category": "Cell",
+            "prefix": "#",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "#cell"
+            ],
+            "replacement": "11973535162",
+            "category": "Cell",
+            "prefix": "#",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "#cells"
+            ],
+            "replacement": "11972586520\n11991486309\n11997588879\n11973535162",
+            "category": "Cell",
+            "prefix": "#",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "linux.scpltow",
+                "linux.scp2",
+                "linux.scplinux",
+                "linux.scplin",
+                "linux.sendfile2",
+                "linuxscp"
+            ],
+            "replacement": "scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop",
+            "category": "Linux",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "linux.apacheconf",
+                "linux.apache1",
+                "linux.confapache",
+                "linux.editapache",
+                "linux.apachefolder",
+                "linuxapache1",
+                "apache.conf",
+                "apacheconf",
+                "apache.conffile",
+                "apache.fileconf"
+            ],
+            "replacement": "sudo nano /etc/apache2/apache2.conf",
+            "category": "Linux",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "linuxpass",
+                "linuxpassword",
+                "linux.pass"
+            ],
+            "replacement": "oiamigo-senhaboaessa-okUbuntu2021@",
+            "category": "Linux",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "linux.update",
+                "linux.update",
+                "linuxupdate",
+                "linux.update",
+                "@linuxupdate",
+                "@linux.update",
+                "@updatelinux",
+                "@update.linux",
+                "updatelinux"
+            ],
+            "replacement": "sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove",
+            "category": "Linux",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "gitlog1",
+                "gitlogn",
+                "git.logn",
+                "git.log1",
+                "gitlognopager",
+                "git.lognopager",
+                "gitlog"
+            ],
+            "replacement": "git --no-pager log --oneline | nl | code -",
+            "category": "Git",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.run"
+            ],
+            "replacement": "Run, %comspec% /c taskkill /f /im Notepad.exe,,hide",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.date",
+                "ahk.data"
+            ],
+            "replacement": "global dataAtual\nFormatTime, dataAtual, , dd/MM/yyyy - dddd - H:m:ss",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.notify_erro"
+            ],
+            "replacement": "Notify().AddWindow(\"Texto\",{Time:3000,Icon:28,Background:\"0x990000\",Title:\"ERRO\",TitleSize:15, Size:15, Color: \"0xCDA089\", TitleColor: \"0xE1B9A4\"},\"w330 h30\",\"setPosBR\") ;\n\nNotify(\"Error\"     ,\"Ocorreu um erro ao recuperar os detalhes do fluxo de dados\",5,\"Style=Info\") \nNotify(\"Error\",erro,5,\"Style=Info\") ",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.notify_alert"
+            ],
+            "replacement": "Notify().AddWindow(\"Texto\",{Time:3000,Icon:238, Background:\"0xFFFB03\",Title:\"ALERTA\",TitleSize:15, Size:15, Color: \"0x524D4D\", TitleColor: \"0x3E3E3E\"},,\"setPosBR\")\n\nNotify(\"Error\"     ,\"Ocorreu um erro ao recuperar os detalhes do fluxo de dados\",5,\"Style=Info\") \nNotify(\"Error\",erro,5,\"Style=Info\") ",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.notify_info"
+            ],
+            "replacement": "Notify().AddWindow(\"Texto\",{Time:3000,Icon:131, Background:\"0x1100AA\",Title:\"NOTIFICACAO\",TitleSize:15, Size:15, Color: \"0xE7DBD4\", TitleColor: \"0xE3CFC4\"},,\"setPosBR\")\n\nNotify(\"Sucesso ao recuperar os detalhes do fluxo de dados!\",responseBody,\"\",\"Duration=1 Image=300 GC=0xddddff BC=0x0000FF\")",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.msgboxval"
+            ],
+            "replacement": "   SetTimer, ChangeButtonNames, 50 \n   MsgBox, 4, Capturar ID das ferramentas Analytics , O Arquivo j\u00e1 existe com o seguinte conte\u00fado: `n %allIds% `n Deseja continuar?,4\n   IfMsgBox, YES \n      MsgBox, You chose Add. \n   else \n      return \n\n   ChangeButtonNames: \n   IfWinNotExist, Capturar ID das ferramentas Analytics\n      return  ; Keep waiting.\n   SetTimer, ChangeButtonNames, Off \n   WinActivate \n   ControlSetText, Button1, &Capturar Ids\n   ControlSetText, Button2, &Cancelar\n   return",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.msgboxerro",
+                "ahkmsgboxerro"
+            ],
+            "replacement": "MsgBox, 4112 , Erro na URL do Site!, URL Inv\u00e1lida%NewLine%- A URL deve come\u00e7ar com www. ou https://%NewLine%- N\u00e3o pode conter caracteres especiais e barra invertido, 5",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.msgboxsucesso",
+                "ahkmsgboxsucesso"
+            ],
+            "replacement": "\tMsgBox, 4160 , SUCESSO!, C\u00f3digo copiado para a \u00e1rea de transfer\u00eancia, 3\n\tMsgBox, 64, CANCELAR, Voc\u00ea pressionou cancelar, 3\n\tMsgBox, 48, Tempo Excedido, TIMEOUT, 5",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.notify_sucesso"
+            ],
+            "replacement": "Notify().AddWindow(\"Clipboard atualizado!\",{Time:3000,Icon:177,Background:\"0x039018\",Title:\"SUCESSO\",TitleColor:\"0xF0F8F1\", TitleSize:15, Size:15, Color: \"0xF0F8F1\"},\"\",\"setPosBR\") \n\nNotify(\"Sucesso ao recuperar os detalhes do fluxo de dados!\",responseBody,\"\",\"Duration=1 Image=300 GC=0xddddff BC=0x0000FF\")",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.jsontoobj",
+                "ahk.json1",
+                "ahkjson1",
+                "ahkjsontoobj"
+            ],
+            "replacement": "response := json_toobj(ResponseText)",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.jsonfromobj",
+                "ahk.json2",
+                "ahkjson2",
+                "ahkjsonfromobj"
+            ],
+            "replacement": "json_fromobj(filter)",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "ahk.httprequest",
+                "ahk.request",
+                "ahkhttprequest",
+                "ahk.http.request",
+                "ahk.winhttprequest"
+            ],
+            "replacement": "GetDatabaseItems(DatabaseId, NotionAPIKey, RequestBody:=\"\"){\n\t\toHTTP := ComObjCreate(\"WinHttp.WinHttpRequest.5.1\")\n\t\toHTTP.Open(\"POST\", \"https://api.notion.com/v1/databases/\" DatabaseId \"/query\", false)\n\t\toHTTP.SetRequestHeader(\"Content-Type\", \"application/json\")\n\t\toHTTP.SetRequestHeader(\"Authorization\", \"Bearer \" . NotionAPIKey)\n\t\toHTTP.SetRequestHeader(\"Notion-Version\", \"2022-06-28\")\n\t\toHTTP.Send(RequestBody)\n\t\n\t\t; Verifique a resposta\n\t\tResponseText := oHTTP.ResponseText\n\t  \n\t\t; Armazenar Dados\n\t\tdatabaseItems := []\n\t\tdatabaseItemsNames := \"\"\n\t\tPaginas := json_toobj(ResponseText).results\n\t\tFor index, pagina in Paginas\n\t\t\t{ ;index < 25 &&\n\t\t\t\tdbPageTitle := pagina.properties.Name.title[1].text.content\n\t\t\t\tIf( pagina != \"\" && pagina != \"Untitled\" && pagina) ; limitar a 5 itens\n\t\t\t\t{\n\t\t\t\t\tdatabaseItems.Push(dbPageTitle)\n\t\t\t\t\tdatabaseItemsNames .= dbPageTitle \"|\"\n\t\t\t\t}\n\t\t\t\tElse\n\t\t\t\t\tBreak\n\t\t\t}\n\t\tReturn {ResponseText: ResponseText, databaseItems: databaseItems, databaseItemsNames: databaseItemsNames}\n\t}\n\n\tResponseText := GetDatabaseItems(DatabaseId, NotionAPIKey).ResponseText\n\tDatabaseItems := GetDatabaseItems(DatabaseId, NotionAPIKey).databaseItems",
+            "category": "AHK",
+            "prefix": "",
+            "backCount": 0
+        },
+        {
+            "triggers": [
+                "@data",
+                "@hoje"
+            ],
+            "replacement": "python import datetime; result = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')",
+            "category": "Dynamic",
+            "prefix": "",
+            "backCount": 0
         }
     ]
 }

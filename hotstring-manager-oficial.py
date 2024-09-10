@@ -5,6 +5,15 @@ import keyboard
 import threading
 import re
 import time
+import ast
+import datetime
+
+# import ctypes
+# import subprocess
+# import os
+# import sys
+import pyuac
+
 
 CONFIG_FILE = "hotstrings.json"
 
@@ -12,6 +21,7 @@ class HotstringManager:
     def __init__(self, master):
         self.master = master
         self.master.title("Gerenciador de Hotstrings")
+        
 
         # Carregar hotstrings do arquivo de configuração
         self.hotstrings = self.load_hotstrings()
@@ -45,29 +55,29 @@ class HotstringManager:
         self.add_frame.pack(pady=10)
 
         # Primeira linha: Trigger, Replacement e Prefix
-        tk.Label(self.add_frame, text="Trigger:").grid(row=0, column=0, padx=5)
+        tk.Label(self.add_frame, text="Trigger:").grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.trigger_entry = tk.Entry(self.add_frame)
-        self.trigger_entry.grid(row=0, column=1, padx=5)
+        self.trigger_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew")
 
-        tk.Label(self.add_frame, text="Replacement:").grid(row=0, column=2, padx=5)
+        tk.Label(self.add_frame, text="Replacement:").grid(row=0, column=2, padx=5, pady=5, sticky="w")
         self.replacement_entry = tk.Entry(self.add_frame)
-        self.replacement_entry.grid(row=0, column=3, padx=5)
+        self.replacement_entry.grid(row=0, column=3, padx=5, pady=5, sticky="ew")
 
-        tk.Label(self.add_frame, text="Prefix:").grid(row=0, column=4, padx=5)
+        tk.Label(self.add_frame, text="Prefix:").grid(row=0, column=4, padx=5, pady=5, sticky="w")
         self.prefix_entry = tk.Entry(self.add_frame)
-        self.prefix_entry.grid(row=0, column=5, padx=5)
+        self.prefix_entry.grid(row=0, column=5, padx=5, pady=5, sticky="ew")
 
         # Segunda linha: Category, BackCount e Botão Add
-        tk.Label(self.add_frame, text="Category:").grid(row=1, column=0, padx=5)
+        tk.Label(self.add_frame, text="Category:").grid(row=1, column=0, padx=5, pady=5, sticky="w")
         self.category_combobox = ttk.Combobox(self.add_frame, values=self.get_categories(), state="normal")
-        self.category_combobox.grid(row=1, column=1, padx=5)
+        self.category_combobox.grid(row=1, column=1, padx=5, pady=5, sticky="ew")
         self.category_combobox.bind("<FocusOut>", self.on_category_combobox_focus_out)
 
-        tk.Label(self.add_frame, text="BackCount:").grid(row=1, column=2, padx=5)
+        tk.Label(self.add_frame, text="BackCount:").grid(row=1, column=2, padx=5, pady=5, sticky="w")
         self.backcount_spinbox = tk.Spinbox(self.add_frame, from_=0, to=100, width=5)  # Valor de 0 a 100
-        self.backcount_spinbox.grid(row=1, column=3, padx=5)
+        self.backcount_spinbox.grid(row=1, column=3, padx=5, pady=5, sticky="ew")
 
-        tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=1, column=4, padx=5)
+        tk.Button(self.add_frame, text="Add", command=self.add_hotstring).grid(row=1, column=4, padx=5, pady=5)
 
         # Lista de hotstrings
         self.tree = ttk.Treeview(self.master, columns=("trigger", "replacement", "category", "prefix", "backCount"), show="headings")
@@ -75,10 +85,15 @@ class HotstringManager:
         self.tree.heading("replacement", text="Replacement")
         self.tree.heading("category", text="Category")
         self.tree.heading("prefix", text="Prefix")
-        self.tree.pack(pady=10)
+        self.tree.heading("backCount", text="backCount")
+        self.tree.pack(pady=10, fill="both", expand=True)
+        
+        # Define a largura das colunas para 0 para escondê-las
+        self.tree.column("category", width=0, stretch=tk.NO)
+        self.tree.column("prefix", width=0, stretch=tk.NO)
+        self.tree.column("backCount", width=0, stretch=tk.NO)
 
-        # Botão de delete
-        tk.Button(self.master, text="Delete", command=self.delete_hotstring).pack(pady=10)
+
 
         self.load_tree()
 
@@ -86,15 +101,19 @@ class HotstringManager:
         self.search_frame = tk.Frame(self.master)
         self.search_frame.pack(pady=10)
 
-        tk.Label(self.search_frame, text="Search:").grid(row=0, column=0, padx=5)
+        tk.Label(self.search_frame, text="Search:").grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.search_entry = tk.Entry(self.search_frame)
-        self.search_entry.grid(row=0, column=1, padx=5)
+        self.search_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew")
         self.search_entry.bind("<KeyRelease>", self.search_hotstrings)
 
-        tk.Label(self.search_frame, text="Category:").grid(row=0, column=2, padx=5)
+        tk.Label(self.search_frame, text="Category:").grid(row=0, column=2, padx=5, pady=5, sticky="w")
         self.filter_combobox = ttk.Combobox(self.search_frame, values=self.get_categories())
-        self.filter_combobox.grid(row=0, column=3, padx=5)
+        self.filter_combobox.grid(row=0, column=3, padx=5, pady=5, sticky="ew")
         self.filter_combobox.bind("<<ComboboxSelected>>", self.filter_by_category)
+        # Botão de delete
+        tk.Button(self.master, text="Delete", command=self.delete_hotstring).pack(pady=10)
+        # tk.Button(self.master, text="Delete", command=self.delete_hotstring).grid(row=1, column=4, padx=5, pady=5)
+
 
 
     def get_categories(self):
@@ -241,31 +260,72 @@ class HotstringManager:
                 # keyboard.add_abbreviation(trigger, replacement)
                 print(f"Adding hotstring: '{trigger}' -> '{replacement}' with backCount: {back_count}")  # Adicione este print para depuração
                 # Adicionar o listener para detectar o texto digitado e substituir
-                def callback():
-                    # Remove o texto digitado com backspace
-                    trigger_length = len(trigger)
-                    for _ in range(trigger_length+1): # + 1 por causa do espaço ou triggers
-                        keyboard.press_and_release('backspace')
-                        time.sleep(0.00)  # Pequena pausa para garantir que o backspace é registrado
-                    # Digita o texto de substituição
-                    keyboard.write(replacement)
-                    time.sleep(0.00)  # Pequena pausa para garantir que o texto seja escrito
-
-                    # Simula pressionar a tecla Left `back_count` vezes
-                    for _ in range(back_count):
-                        keyboard.press_and_release('left')
-                        time.sleep(0.00)  # Pequena pausa para garantir que o backspace é registrado
-
                 keyboard.add_word_listener(
                     trigger,
-                    callback,
+                    self.create_callback(trigger, replacement, back_count),
                     triggers=['space'],
                     match_suffix=False,
-                    timeout=2
+                    timeout=25
                 )
                 # keyboard.add_abbreviation(trigger, lambda: replace_with_back_count(replacement, back_count))
                 # keyboard.add_abbreviation(trigger, lambda: self.replace_with_back_count(replacement, back_count))
                 # keyboard.add_abbreviation(trigger, lambda: self.replace_with_back_count(replacement, back_count))
+    def create_callback(self, trigger, replacement, back_count):
+        def callback():
+            # Remove o texto digitado com backspace
+            trigger_length = len(trigger)+1
+            for _ in range(trigger_length):
+                keyboard.press_and_release('backspace')
+                time.sleep(0.01)  # Pequena pausa para garantir que o backspace é registrado
+                
+            # try:
+            #     # Verifica se o código é sintaticamente válido
+            #     ast.parse(replacement)
+                
+            #     # Executa o código se for válido
+            #     exec_globals = {}
+            #     exec_locals = {}
+            #     exec(replacement, exec_globals, exec_locals)
+                
+            #     # Retorna o resultado, assumindo que a variável 'result' está definida
+            #     result = exec_locals.get('result', "Nada")
+            #     print(result)
+            # except SyntaxError:
+            #     # Código inválido
+            #     result = replacement
+            if replacement.startswith("python "):
+                # Remove o prefixo 'python ' do replacement
+                code = replacement[len("python "):]
+                
+                try:
+                    # Verifica se o código é sintaticamente válido
+                    ast.parse(code)
+                    
+                    # Executa o código se for válido
+                    exec_globals = {}
+                    exec_locals = {}
+                    exec(code, exec_globals, exec_locals)
+                    
+                    # Retorna o resultado, assumindo que a variável 'result' está definida
+                    result = exec_locals.get('result', 'Nenhum resultado encontrado.')
+                    keyboard.write(result)
+                    
+                except SyntaxError as e:
+                    # Retorna a mensagem de erro de sintaxe
+                    return f"Erro de sintaxe: {e}"
+                except Exception as e:
+                    # Retorna qualquer outro erro
+                    return f"Erro durante a execução: {e}"
+            else:
+                keyboard.write(replacement)
+                time.sleep(0.01)  # Pequena pausa para garantir que o texto seja escrito
+                # Simula pressionar a tecla Left `back_count` vezes
+                for _ in range(back_count):
+                    keyboard.press_and_release('left')
+                    time.sleep(0.01)  # Pequena pausa para garantir que o movimento do cursor é registrado
+
+
+        return callback
     def execute_backspace(self, replacement, back_count):
         # Digita o texto de substituição
         keyboard.write(replacement)
@@ -281,8 +341,13 @@ class HotstringManager:
         # Iniciar o monitoramento dos eventos de teclado
         print("Hotstring listener active. Press 'esc' to exit.")
         keyboard.wait("shift+ctrl+esc")  # Use a tecla 'esc' para terminar o script
-
+        
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = HotstringManager(root)
-    root.mainloop()
+    if not pyuac.isUserAdmin():
+        print("Re-launching as admin!")
+        pyuac.runAsAdmin()
+    else:
+        root = tk.Tk()
+        app = HotstringManager(root)
+        root.mainloop()
+

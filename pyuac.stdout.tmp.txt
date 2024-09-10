@@ -1,0 +1,322 @@
+Adding hotstring: 'propz.pass' -> 'Marketing11@-analytics' with backCount: 0
+Adding hotstring: '@propzpass' -> 'Marketing11@-analytics' with backCount: 0
+Adding hotstring: 'propz.senha. propzpass' -> 'Marketing11@-analytics' with backCount: 0
+Adding hotstring: 'propzsenha' -> 'Marketing11@-analytics' with backCount: 0
+Adding hotstring: 'propzemailsenha' -> 'Marketing11@-analytics' with backCount: 0
+Adding hotstring: 'propz.clear' -> 'localStorage.clear();
+sessionStorage.clear();
+indexedDB.deleteDatabase('localforage');
+indexedDB.deleteDatabase('firebase-messaging-database');
+indexedDB.deleteDatabase('firebase-installations-database');
+indexedDB.deleteDatabase('firebase-heartbeat-database');' with backCount: 0
+Adding hotstring: 'propz.clean' -> 'localStorage.clear();
+sessionStorage.clear();
+indexedDB.deleteDatabase('localforage');
+indexedDB.deleteDatabase('firebase-messaging-database');
+indexedDB.deleteDatabase('firebase-installations-database');
+indexedDB.deleteDatabase('firebase-heartbeat-database');' with backCount: 0
+Adding hotstring: 'js.clear' -> 'localStorage.clear();
+sessionStorage.clear();
+indexedDB.deleteDatabase('localforage');
+indexedDB.deleteDatabase('firebase-messaging-database');
+indexedDB.deleteDatabase('firebase-installations-database');
+indexedDB.deleteDatabase('firebase-heartbeat-database');' with backCount: 0
+Adding hotstring: 'jsclear' -> 'localStorage.clear();
+sessionStorage.clear();
+indexedDB.deleteDatabase('localforage');
+indexedDB.deleteDatabase('firebase-messaging-database');
+indexedDB.deleteDatabase('firebase-installations-database');
+indexedDB.deleteDatabase('firebase-heartbeat-database');' with backCount: 0
+Adding hotstring: 'propzclear' -> 'localStorage.clear();
+sessionStorage.clear();
+indexedDB.deleteDatabase('localforage');
+indexedDB.deleteDatabase('firebase-messaging-database');
+indexedDB.deleteDatabase('firebase-installations-database');
+indexedDB.deleteDatabase('firebase-heartbeat-database');' with backCount: 0
+Adding hotstring: 'jsclean' -> 'localStorage.clear();
+sessionStorage.clear();
+indexedDB.deleteDatabase('localforage');
+indexedDB.deleteDatabase('firebase-messaging-database');
+indexedDB.deleteDatabase('firebase-installations-database');
+indexedDB.deleteDatabase('firebase-heartbeat-database');' with backCount: 0
+Adding hotstring: 'clog' -> 'console.log()' with backCount: 1
+Adding hotstring: 'js.urlmongodb' -> 'mongodb+srv://admin:admin@cluster0.6arhq.mongodb.net/?retryWrites=true&w=majority' with backCount: 0
+Adding hotstring: 'js.mongodburl' -> 'mongodb+srv://admin:admin@cluster0.6arhq.mongodb.net/?retryWrites=true&w=majority' with backCount: 0
+Adding hotstring: 'urlmongodb' -> 'mongodb+srv://admin:admin@cluster0.6arhq.mongodb.net/?retryWrites=true&w=majority' with backCount: 0
+Adding hotstring: 'js.urlaxios' -> '<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>' with backCount: 0
+Adding hotstring: 'js.axiosurl' -> '<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>' with backCount: 0
+Adding hotstring: 'js.axios.url' -> '<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>' with backCount: 0
+Adding hotstring: 'js.url.axios' -> '<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>' with backCount: 0
+Adding hotstring: 'urlaxios' -> '<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>' with backCount: 0
+Adding hotstring: 'js.queryone' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'qsone' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'js.qsone' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'js.qs.one' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'jsqs1' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'js.qs1' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'jsquery1' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'js.query1' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'js.query' -> 'document.querySelector('*').textContent' with backCount: 15
+Adding hotstring: 'qsall' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'js.qsall' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'jsqsall' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'js' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'queryall' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'js.qsall' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'js.query2' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: 'js.qs2' -> 'document.querySelectorAll('*')' with backCount: 2
+Adding hotstring: '@fg' -> 'felipelullio@gmail.com' with backCount: 0
+Adding hotstring: '@fh' -> 'felipe.lullio@hotmail.com' with backCount: 0
+Adding hotstring: '@fp' -> 'felipe.lullio@propz.com.br' with backCount: 0
+Adding hotstring: '@cg' -> 'cursofiap@gmail.com' with backCount: 0
+Adding hotstring: '#cell1' -> '11991486309' with backCount: 0
+Adding hotstring: '#cell2' -> '11972586520' with backCount: 0
+Adding hotstring: '#cell3' -> '11997588879' with backCount: 0
+Adding hotstring: '#cell' -> '11973535162' with backCount: 0
+Adding hotstring: '#cells' -> '11972586520
+11991486309
+11997588879
+11973535162' with backCount: 0
+Adding hotstring: 'linux.scpltow' -> 'scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop' with backCount: 0
+Adding hotstring: 'linux.scp2' -> 'scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop' with backCount: 0
+Adding hotstring: 'linux.scplinux' -> 'scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop' with backCount: 0
+Adding hotstring: 'linux.scplin' -> 'scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop' with backCount: 0
+Adding hotstring: 'linux.sendfile2' -> 'scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop' with backCount: 0
+Adding hotstring: 'linuxscp' -> 'scp /home/ubuntu/backups/backup-05-07-2023-25.tar.gz felipe@oi.ddns.net:/C:/Users/felipe/Desktop' with backCount: 0
+Adding hotstring: 'linux.apacheconf' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'linux.apache1' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'linux.confapache' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'linux.editapache' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'linux.apachefolder' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'linuxapache1' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'apache.conf' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'apacheconf' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'apache.conffile' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'apache.fileconf' -> 'sudo nano /etc/apache2/apache2.conf' with backCount: 0
+Adding hotstring: 'linuxpass' -> 'oiamigo-senhaboaessa-okUbuntu2021@' with backCount: 0
+Adding hotstring: 'linuxpassword' -> 'oiamigo-senhaboaessa-okUbuntu2021@' with backCount: 0
+Adding hotstring: 'linux.pass' -> 'oiamigo-senhaboaessa-okUbuntu2021@' with backCount: 0
+Adding hotstring: 'linux.update' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: 'linux.update' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: 'linuxupdate' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: 'linux.update' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: '@linuxupdate' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: '@linux.update' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: '@updatelinux' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: '@update.linux' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: 'updatelinux' -> 'sudo apt update && sudo apt upgrade && sudo apt autoclean && sudo apt clean && sudo apt autoremove' with backCount: 0
+Adding hotstring: 'gitlog1' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'gitlogn' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'git.logn' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'git.log1' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'gitlognopager' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'git.lognopager' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'gitlog' -> 'git --no-pager log --oneline | nl | code -' with backCount: 0
+Adding hotstring: 'ahk.run' -> 'Run, %comspec% /c taskkill /f /im Notepad.exe,,hide' with backCount: 0
+Adding hotstring: 'ahk.date' -> 'global dataAtual
+FormatTime, dataAtual, , dd/MM/yyyy - dddd - H:m:ss' with backCount: 0
+Adding hotstring: 'ahk.data' -> 'global dataAtual
+FormatTime, dataAtual, , dd/MM/yyyy - dddd - H:m:ss' with backCount: 0
+Adding hotstring: 'ahk.notify_erro' -> 'Notify().AddWindow("Texto",{Time:3000,Icon:28,Background:"0x990000",Title:"ERRO",TitleSize:15, Size:15, Color: "0xCDA089", TitleColor: "0xE1B9A4"},"w330 h30","setPosBR") ;
+
+Notify("Error"     ,"Ocorreu um erro ao recuperar os detalhes do fluxo de dados",5,"Style=Info") 
+Notify("Error",erro,5,"Style=Info") ' with backCount: 0
+Adding hotstring: 'ahk.notify_alert' -> 'Notify().AddWindow("Texto",{Time:3000,Icon:238, Background:"0xFFFB03",Title:"ALERTA",TitleSize:15, Size:15, Color: "0x524D4D", TitleColor: "0x3E3E3E"},,"setPosBR")
+
+Notify("Error"     ,"Ocorreu um erro ao recuperar os detalhes do fluxo de dados",5,"Style=Info") 
+Notify("Error",erro,5,"Style=Info") ' with backCount: 0
+Adding hotstring: 'ahk.notify_info' -> 'Notify().AddWindow("Texto",{Time:3000,Icon:131, Background:"0x1100AA",Title:"NOTIFICACAO",TitleSize:15, Size:15, Color: "0xE7DBD4", TitleColor: "0xE3CFC4"},,"setPosBR")
+
+Notify("Sucesso ao recuperar os detalhes do fluxo de dados!",responseBody,"","Duration=1 Image=300 GC=0xddddff BC=0x0000FF")' with backCount: 0
+Adding hotstring: 'ahk.msgboxval' -> '   SetTimer, ChangeButtonNames, 50 
+   MsgBox, 4, Capturar ID das ferramentas Analytics , O Arquivo já existe com o seguinte conteúdo: `n %allIds% `n Deseja continuar?,4
+   IfMsgBox, YES 
+      MsgBox, You chose Add. 
+   else 
+      return 
+
+   ChangeButtonNames: 
+   IfWinNotExist, Capturar ID das ferramentas Analytics
+      return  ; Keep waiting.
+   SetTimer, ChangeButtonNames, Off 
+   WinActivate 
+   ControlSetText, Button1, &Capturar Ids
+   ControlSetText, Button2, &Cancelar
+   return' with backCount: 0
+Adding hotstring: 'ahk.msgboxerro' -> 'MsgBox, 4112 , Erro na URL do Site!, URL Inválida%NewLine%- A URL deve começar com www. ou https://%NewLine%- Não pode conter caracteres especiais e barra invertido, 5' with backCount: 0
+Adding hotstring: 'ahkmsgboxerro' -> 'MsgBox, 4112 , Erro na URL do Site!, URL Inválida%NewLine%- A URL deve começar com www. ou https://%NewLine%- Não pode conter caracteres especiais e barra invertido, 5' with backCount: 0
+Adding hotstring: 'ahk.msgboxsucesso' -> '	MsgBox, 4160 , SUCESSO!, Código copiado para a área de transferência, 3
+	MsgBox, 64, CANCELAR, Você pressionou cancelar, 3
+	MsgBox, 48, Tempo Excedido, TIMEOUT, 5' with backCount: 0
+Adding hotstring: 'ahkmsgboxsucesso' -> '	MsgBox, 4160 , SUCESSO!, Código copiado para a área de transferência, 3
+	MsgBox, 64, CANCELAR, Você pressionou cancelar, 3
+	MsgBox, 48, Tempo Excedido, TIMEOUT, 5' with backCount: 0
+Adding hotstring: 'ahk.notify_sucesso' -> 'Notify().AddWindow("Clipboard atualizado!",{Time:3000,Icon:177,Background:"0x039018",Title:"SUCESSO",TitleColor:"0xF0F8F1", TitleSize:15, Size:15, Color: "0xF0F8F1"},"","setPosBR") 
+
+Notify("Sucesso ao recuperar os detalhes do fluxo de dados!",responseBody,"","Duration=1 Image=300 GC=0xddddff BC=0x0000FF")' with backCount: 0
+Adding hotstring: 'ahk.jsontoobj' -> 'response := json_toobj(ResponseText)' with backCount: 0
+Adding hotstring: 'ahk.json1' -> 'response := json_toobj(ResponseText)' with backCount: 0
+Adding hotstring: 'ahkjson1' -> 'response := json_toobj(ResponseText)' with backCount: 0
+Adding hotstring: 'ahkjsontoobj' -> 'response := json_toobj(ResponseText)' with backCount: 0
+Adding hotstring: 'ahk.jsonfromobj' -> 'json_fromobj(filter)' with backCount: 0
+Adding hotstring: 'ahk.json2' -> 'json_fromobj(filter)' with backCount: 0
+Adding hotstring: 'ahkjson2' -> 'json_fromobj(filter)' with backCount: 0
+Adding hotstring: 'ahkjsonfromobj' -> 'json_fromobj(filter)' with backCount: 0
+Adding hotstring: 'ahk.httprequest' -> 'GetDatabaseItems(DatabaseId, NotionAPIKey, RequestBody:=""){
+		oHTTP := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		oHTTP.Open("POST", "https://api.notion.com/v1/databases/" DatabaseId "/query", false)
+		oHTTP.SetRequestHeader("Content-Type", "application/json")
+		oHTTP.SetRequestHeader("Authorization", "Bearer " . NotionAPIKey)
+		oHTTP.SetRequestHeader("Notion-Version", "2022-06-28")
+		oHTTP.Send(RequestBody)
+	
+		; Verifique a resposta
+		ResponseText := oHTTP.ResponseText
+	  
+		; Armazenar Dados
+		databaseItems := []
+		databaseItemsNames := ""
+		Paginas := json_toobj(ResponseText).results
+		For index, pagina in Paginas
+			{ ;index < 25 &&
+				dbPageTitle := pagina.properties.Name.title[1].text.content
+				If( pagina != "" && pagina != "Untitled" && pagina) ; limitar a 5 itens
+				{
+					databaseItems.Push(dbPageTitle)
+					databaseItemsNames .= dbPageTitle "|"
+				}
+				Else
+					Break
+			}
+		Return {ResponseText: ResponseText, databaseItems: databaseItems, databaseItemsNames: databaseItemsNames}
+	}
+
+	ResponseText := GetDatabaseItems(DatabaseId, NotionAPIKey).ResponseText
+	DatabaseItems := GetDatabaseItems(DatabaseId, NotionAPIKey).databaseItems' with backCount: 0
+Adding hotstring: 'ahk.request' -> 'GetDatabaseItems(DatabaseId, NotionAPIKey, RequestBody:=""){
+		oHTTP := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		oHTTP.Open("POST", "https://api.notion.com/v1/databases/" DatabaseId "/query", false)
+		oHTTP.SetRequestHeader("Content-Type", "application/json")
+		oHTTP.SetRequestHeader("Authorization", "Bearer " . NotionAPIKey)
+		oHTTP.SetRequestHeader("Notion-Version", "2022-06-28")
+		oHTTP.Send(RequestBody)
+	
+		; Verifique a resposta
+		ResponseText := oHTTP.ResponseText
+	  
+		; Armazenar Dados
+		databaseItems := []
+		databaseItemsNames := ""
+		Paginas := json_toobj(ResponseText).results
+		For index, pagina in Paginas
+			{ ;index < 25 &&
+				dbPageTitle := pagina.properties.Name.title[1].text.content
+				If( pagina != "" && pagina != "Untitled" && pagina) ; limitar a 5 itens
+				{
+					databaseItems.Push(dbPageTitle)
+					databaseItemsNames .= dbPageTitle "|"
+				}
+				Else
+					Break
+			}
+		Return {ResponseText: ResponseText, databaseItems: databaseItems, databaseItemsNames: databaseItemsNames}
+	}
+
+	ResponseText := GetDatabaseItems(DatabaseId, NotionAPIKey).ResponseText
+	DatabaseItems := GetDatabaseItems(DatabaseId, NotionAPIKey).databaseItems' with backCount: 0
+Adding hotstring: 'ahkhttprequest' -> 'GetDatabaseItems(DatabaseId, NotionAPIKey, RequestBody:=""){
+		oHTTP := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		oHTTP.Open("POST", "https://api.notion.com/v1/databases/" DatabaseId "/query", false)
+		oHTTP.SetRequestHeader("Content-Type", "application/json")
+		oHTTP.SetRequestHeader("Authorization", "Bearer " . NotionAPIKey)
+		oHTTP.SetRequestHeader("Notion-Version", "2022-06-28")
+		oHTTP.Send(RequestBody)
+	
+		; Verifique a resposta
+		ResponseText := oHTTP.ResponseText
+	  
+		; Armazenar Dados
+		databaseItems := []
+		databaseItemsNames := ""
+		Paginas := json_toobj(ResponseText).results
+		For index, pagina in Paginas
+			{ ;index < 25 &&
+				dbPageTitle := pagina.properties.Name.title[1].text.content
+				If( pagina != "" && pagina != "Untitled" && pagina) ; limitar a 5 itens
+				{
+					databaseItems.Push(dbPageTitle)
+					databaseItemsNames .= dbPageTitle "|"
+				}
+				Else
+					Break
+			}
+		Return {ResponseText: ResponseText, databaseItems: databaseItems, databaseItemsNames: databaseItemsNames}
+	}
+
+	ResponseText := GetDatabaseItems(DatabaseId, NotionAPIKey).ResponseText
+	DatabaseItems := GetDatabaseItems(DatabaseId, NotionAPIKey).databaseItems' with backCount: 0
+Adding hotstring: 'ahk.http.request' -> 'GetDatabaseItems(DatabaseId, NotionAPIKey, RequestBody:=""){
+		oHTTP := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		oHTTP.Open("POST", "https://api.notion.com/v1/databases/" DatabaseId "/query", false)
+		oHTTP.SetRequestHeader("Content-Type", "application/json")
+		oHTTP.SetRequestHeader("Authorization", "Bearer " . NotionAPIKey)
+		oHTTP.SetRequestHeader("Notion-Version", "2022-06-28")
+		oHTTP.Send(RequestBody)
+	
+		; Verifique a resposta
+		ResponseText := oHTTP.ResponseText
+	  
+		; Armazenar Dados
+		databaseItems := []
+		databaseItemsNames := ""
+		Paginas := json_toobj(ResponseText).results
+		For index, pagina in Paginas
+			{ ;index < 25 &&
+				dbPageTitle := pagina.properties.Name.title[1].text.content
+				If( pagina != "" && pagina != "Untitled" && pagina) ; limitar a 5 itens
+				{
+					databaseItems.Push(dbPageTitle)
+					databaseItemsNames .= dbPageTitle "|"
+				}
+				Else
+					Break
+			}
+		Return {ResponseText: ResponseText, databaseItems: databaseItems, databaseItemsNames: databaseItemsNames}
+	}
+
+	ResponseText := GetDatabaseItems(DatabaseId, NotionAPIKey).ResponseText
+	DatabaseItems := GetDatabaseItems(DatabaseId, NotionAPIKey).databaseItems' with backCount: 0
+Adding hotstring: 'ahk.winhttprequest' -> 'GetDatabaseItems(DatabaseId, NotionAPIKey, RequestBody:=""){
+		oHTTP := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		oHTTP.Open("POST", "https://api.notion.com/v1/databases/" DatabaseId "/query", false)
+		oHTTP.SetRequestHeader("Content-Type", "application/json")
+		oHTTP.SetRequestHeader("Authorization", "Bearer " . NotionAPIKey)
+		oHTTP.SetRequestHeader("Notion-Version", "2022-06-28")
+		oHTTP.Send(RequestBody)
+	
+		; Verifique a resposta
+		ResponseText := oHTTP.ResponseText
+	  
+		; Armazenar Dados
+		databaseItems := []
+		databaseItemsNames := ""
+		Paginas := json_toobj(ResponseText).results
+		For index, pagina in Paginas
+			{ ;index < 25 &&
+				dbPageTitle := pagina.properties.Name.title[1].text.content
+				If( pagina != "" && pagina != "Untitled" && pagina) ; limitar a 5 itens
+				{
+					databaseItems.Push(dbPageTitle)
+					databaseItemsNames .= dbPageTitle "|"
+				}
+				Else
+					Break
+			}
+		Return {ResponseText: ResponseText, databaseItems: databaseItems, databaseItemsNames: databaseItemsNames}
+	}
+
+	ResponseText := GetDatabaseItems(DatabaseId, NotionAPIKey).ResponseText
+	DatabaseItems := GetDatabaseItems(DatabaseId, NotionAPIKey).databaseItems' with backCount: 0
+Adding hotstring: '@data' -> 'python import datetime; result = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')' with backCount: 0
+Adding hotstring: '@hoje' -> 'python import datetime; result = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')' with backCount: 0
+Hotstring listener active. Press 'esc' to exit.
